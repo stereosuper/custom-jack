@@ -1,0 +1,30 @@
+// Variables //
+
+// Theme colors
+$theme1: #F8D99A;
+$theme2: #F8A79B;
+$theme3: #E45170;
+$theme4: #042C6A;
+$theme5: #9896A4;
+
+// Colors
+$white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
+
+// Grid
+$containerWidth: 960px;
+$gutter: 10px;
+$col: 100/12*1%;
+
+// Transitions
+$transition: 0.3s ease-in-out;
+
+// Fonts
+$line-height: 1.2;
+$font: 'noto', sans-serif;
+$fontitalic: 'notoitalic', $font;
+$fontbold: 'notobold', $font;
+$fontbolditalic: 'notobolditalic', $fontitalic;
+
+// Mediaqueries
+$retina: 'only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)';

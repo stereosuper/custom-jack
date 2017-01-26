@@ -1,0 +1,472 @@
+/******* GÉNÉRAL *******/
+
+::-moz-selection{
+    background: $black;
+    color: $white;
+    text-shadow: none;
+}
+::selection{
+    background: $black;
+    color: $white;
+    text-shadow: none;
+}
+
+html{
+    font-size: 62.5%; /* sets the base font to 10px for easier math */
+}
+
+body{
+    font-family: $font;
+    font-size: 1.6em;
+    line-height: $line-height;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.reveal{
+
+    section{
+        &.bg-theme-1{
+            background: bg-theme-1;
+        }
+    }
+
+    h1{
+        font-family: $fontbold;
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    h2{
+        font-family: $fontbold;
+        font-size: 6.3rem;
+        line-height: 1.05;
+        margin: 0;
+        color: $theme4;
+    }
+
+    h3, h4, h5, h6{
+        font-family: $font;
+    }
+
+    h3{
+        font-size: 4.2rem;
+        margin: 0 0 0.5em;
+        color: $theme3;
+    }
+
+    h4{
+        font-size: 2.2rem;
+        margin: 1.33em 0;
+    }
+
+    h5{
+        font-size: 2rem;
+        margin: 1.67em 0;
+    }
+
+    h6{
+        font-size: 1.8rem;
+        margin: 2.33em 0;
+    }
+
+    p{
+        font-size: 3.2rem;
+        margin: 0.9em 0;
+    }
+
+    b, strong{
+        font-family: $fontbold;
+        i, em{
+            font-family: $fontbolditalic;
+        }
+    }
+
+    i, em{
+        font-family: $fontitalic;
+    }
+
+    blockquote{
+        margin: 1em 40px;
+    }
+
+    ol, ul{
+        padding: 0;
+        margin: 1em 0;
+        > li{
+            font-size: 4.6rem;
+            margin: 0.8em 0;
+        }
+    }
+
+    ol{
+        counter-reset: ol-counter;
+        > li{
+            counter-increment: ol-counter;
+            &:before{
+                content: counter(ol-counter)'.';
+            }
+        }
+    }
+
+    ul{
+        list-style-type: none;
+        > li{
+            display: block;
+            position: relative;
+            &:before{
+                content: '';
+                display: block;
+                width: 16px;
+                height: 16px;
+                position: absolute;
+                top: 20px;
+                left: -45px;
+                border: 6px solid $theme3;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+
+    code, pre{
+        display: block;
+        padding: 10px 15px;
+        margin: 1em 0;
+        background: grey;
+    }
+
+    hr{
+        height: 1px;
+        max-width: 250px;
+        border: 0;
+        margin: 3em auto 5em;
+        background: $black;
+    }
+
+    table{
+        width: 100%;
+        margin: 60px 0;
+        thead{
+            tr{
+                td{
+                    background: $theme5;
+                    color: $white;
+                    font-family: $fontbold;
+                    border-left: 1px solid $theme5;
+                    & + td{
+                        border-left: 1px solid $white;
+                    }
+                    &:last-child{
+                        border-right: 1px solid $theme5;
+                    }
+                }
+            }
+        }
+        tbody, tfoot{
+            tr{
+                td{
+                    border: 1px solid $theme5;
+                }
+            }
+        }
+        tr{
+            td{
+                padding: 40px 20px;
+                font-size: 1.8rem;
+            }
+        }
+    }
+
+
+    /******* LIENS / BOUTONS *******/
+
+    a{
+        color: inherit;
+        text-decoration: none;
+        transition: $transition;
+        &:focus, &:hover{
+        }
+        &:focus{
+            outline: 0;
+        }
+        &:active{
+        }
+    }
+
+
+    /******* CLASSES GENERALES  *******/
+
+    .hidden{
+        display: none !important;
+    }
+
+    .wrapper-alignment{
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .content-align-middle{
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .content-align-top{
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .clearfix{
+        @include clearfix;
+    }
+
+    .pos-relative{
+        position: relative;
+    }
+
+    .align-center{
+        text-align: center;
+    }
+    .align-left{
+        text-align: left;
+    }
+    .align-right{
+        text-align: right;
+    }
+
+    .inline-b{
+        display: inline-block;
+        vertical-align: middle;
+        transform: translateY(-.1em);
+    }
+
+    .full-width{
+        width: 100%;
+    }
+    .full-height{
+        height: 100%;
+    }
+
+    .wrapper-align-middle{
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .wrapper-overflow-hidden{
+        position: relative;
+        overflow: hidden;
+    }
+
+    .img-fit{
+        &.compat-object-fit{
+            background-size: cover;
+            background-position: 50% 50%;
+            img{ // hide image if object fit is not supported - opacity to 0 for the link area
+                opacity: 0;
+            }
+        }
+    }
+
+    .extend-to-left, .extend-to-right{
+        position: relative;
+        z-index: 1;
+        &:before{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 10000px;
+            z-index: -1;
+        }
+    }
+    .extend-to-left{
+        &:before{
+            right: 0;
+        }
+    }
+    .extend-to-right{
+        &:before{
+            left: 0;
+        }
+    }
+    
+    .very-small-txt{
+        font-size: 1.6rem;
+    }
+    .small-txt{
+        font-size: 3.2rem;
+    }
+    .medium-txt{
+        font-size: 6rem;
+    }
+    .big-txt{
+        font-size: 14rem;
+    }
+
+    .has-border{
+        border: 1px solid currentColor;
+    }
+    .border-white{
+        border-color: $white;
+    }
+    .border-black{
+        border-color: $black;
+    }
+    .border-theme1{
+        border-color: $theme1;
+    }
+    .border-theme2{
+        border-color: $theme2;
+    }
+    .border-theme3{
+        border-color: $theme3;
+    }
+    .border-theme4{
+        border-color: $theme4;
+    }
+    .border-theme5{
+        border-color: $theme5;
+    }
+
+    .bg-white{
+        background: $white;
+        &.extend-to-left, &.extend-to-right{
+            &:before{
+                background: $white;
+            }
+        }
+        &.transparent{
+            background: rgba($white, 0.8);
+            &.extend-to-left, &.extend-to-right{
+                &:before{
+                    background: rgba($white, 0.8);
+                }
+            }
+        }
+    }
+    .bg-black{
+        background: $black;
+        &.extend-to-left, &.extend-to-right{
+            &:before{
+                background: $black;
+            }
+        }
+        &.transparent{
+            background: rgba($black, 0.8);
+            &.extend-to-left, &.extend-to-right{
+                &:before{
+                    background: rgba($black, 0.8);
+                }
+            }
+        }
+    }
+    .bg-theme1{
+        background: $theme1;
+        &.extend-to-left, &.extend-to-right{
+            &:before{
+                background: $theme1;
+            }
+        }
+        &.transparent{
+            background: rgba($theme1, 0.8);
+            &.extend-to-left, &.extend-to-right{
+                &:before{
+                    background: rgba($theme1, 0.8);
+                }
+            }
+        }
+    }
+    .bg-theme2{
+        background: $theme2;
+        &.extend-to-left, &.extend-to-right{
+            &:before{
+                background: $theme2;
+            }
+        }
+        &.transparent{
+            background: rgba($theme2, 0.8);
+            &.extend-to-left, &.extend-to-right{
+                &:before{
+                    background: rgba($theme2, 0.8);
+                }
+            }
+        }
+    }
+    .bg-theme3{
+        background: $theme3;
+        &.extend-to-left, &.extend-to-right{
+            &:before{
+                background: $theme3;
+            }
+        }
+        &.transparent{
+            background: rgba($theme3, 0.8);
+            &.extend-to-left, &.extend-to-right{
+                &:before{
+                    background: rgba($theme3, 0.8);
+                }
+            }
+        }
+    }
+    .bg-theme4{
+        background: $theme4;
+        &.extend-to-left, &.extend-to-right{
+            &:before{
+                background: $theme4;
+            }
+        }
+        &.transparent{
+            background: rgba($theme4, 0.8);
+            &.extend-to-left, &.extend-to-right{
+                &:before{
+                    background: rgba($theme4, 0.8);
+                }
+            }
+        }
+    }
+    .bg-theme5{
+        background: $theme5;
+        &.extend-to-left, &.extend-to-right{
+            &:before{
+                background: $theme5;
+            }
+        }
+        &.transparent{
+            background: rgba($theme5, 0.8);
+            &.extend-to-left, &.extend-to-right{
+                &:before{
+                    background: rgba($theme5, 0.8);
+                }
+            }
+        }
+    }
+    .color-white{
+        color: $white;
+    }
+    .color-black{
+        color: $black;
+    }
+    .color-theme1{
+        color: $theme1;
+    }
+    .color-theme2{
+        color: $theme2;
+    }
+    .color-theme3{
+        color: $theme3;
+    }
+    .color-theme4{
+        color: $theme4;
+    }
+    .color-theme5{
+        color: $theme5;
+    }
+}

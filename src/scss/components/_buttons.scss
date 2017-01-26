@@ -1,0 +1,138 @@
+/* Buttons */
+
+.reveal{
+	.btn-arrow{
+		display: none;
+		width: 54px;
+		height: 54px;
+		margin: 0;
+		padding: 0;
+		background: $white;
+		position: absolute;
+		z-index: 2;
+		&.enabled{
+			display: block;
+		}
+		.icon{
+			transform-origin: 50% 50%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			fill: $theme3;
+			transition: transform 0.2s ease-out;
+		}
+		&.up{
+			top: 32px;
+			left: 50%;
+			transform: translate(-50%, 0);
+			&:hover{
+				.icon{
+					transform: translate(0, -10px);
+				}
+			}
+			.icon{
+				width: 32px;
+				height: 20px;
+				margin: -10px 0 0 -16px;
+			}
+		}
+		&.right{
+			top: 50%;
+			right: 15px;
+			transform: translate(0, -50%);
+			&:hover{
+				.icon{
+					transform: translate(10px, 0);
+				}
+			}
+			.icon{
+				width: 20px;
+				height: 32px;
+				margin: -16px 0 0 -10px;
+			}
+		}
+		&.down{
+			bottom: 32px;
+			left: 50%;
+			transform: translate(-50%, 0);
+			&:hover{
+				.icon{
+					transform: translate(0, 10px);
+				}
+			}
+			.icon{
+				width: 32px;
+				height: 20px;
+				margin: -10px 0 0 -16px;
+			}
+		}
+		&.left{
+			top: 50%;
+			left: 15px;
+			transform: translate(0, -50%);
+			&:hover{
+				.icon{
+					transform: translate(-10px, 0);
+				}
+			}
+			.icon{
+				width: 20px;
+				height: 32px;
+				margin: -16px 0 0 -10px;
+			}
+		}
+	}
+}
+
+@media (max-width: 700px){
+	.reveal{
+		.btn-arrow{
+			&.up, &.down{
+				height: 40px;
+				width: 54px;
+			}
+			&.right, &.left{
+				width: 40px;
+			}
+			&.up{
+				top: 50px;
+			}
+			&.bottom{
+				bottom: 50px;
+			}
+		}
+	}
+}
+
+@media (max-width: 560px){
+	.reveal{
+		.btn-arrow{
+			width: 32px;
+			&.up, &.down, &.right, &.left{
+				&:hover{
+					.icon{
+						transform: translate(0, 0);
+					}
+				}
+			}
+			&.up, &.down{
+				height: 32px;
+			}
+			&.right, &.left{
+				width: 32px;
+			}
+			&.up{
+
+			}
+			&.right{
+				right: 0;
+			}
+			&.down{
+
+			}
+			&.left{
+				left: 0;
+			}
+		}
+	}
+}
